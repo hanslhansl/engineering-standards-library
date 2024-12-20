@@ -31,13 +31,6 @@ jobs:
 
       - name: Create release if tests pass
         if: success()  # Only run if the previous step (pytest) succeeded
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}	# $(git rev-parse --short HEAD)
-        run: |
-          gh release create "$tag" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
-              --generate-notes
+
 
 
