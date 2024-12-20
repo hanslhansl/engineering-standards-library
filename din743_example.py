@@ -1,15 +1,13 @@
-import din743
+from din743 import *
 
-print(dir(din743))
-
-werkstoff = din743.S500
+werkstoff = din743_3.S500
 K_A = 1.75
 K_S = 2.5
 
 print("Passfeder Lamellenkupplung")
-lamellenkupplung = din743.Calculator(fall = 2,
+lamellenkupplung = Calculator(fall = 2,
     werkstoff = werkstoff,
-    kerbe = din743.Passfeder(d = 30, i = 2),
+    kerbe = din743_2.Passfeder(d = 30, i = 2),
     d_eff = 56,
     F_zdm = 0,
     F_zda = 0,
@@ -31,9 +29,9 @@ print()
 assert l >= r
 
 print("Passfeder Ritzel")
-ritzel = din743.Calculator(fall = 2,
+ritzel = Calculator(fall = 2,
     werkstoff = lamellenkupplung.werkstoff,
-    kerbe = din743.Passfeder(d = 50, i = 1),
+    kerbe = din743_2.Passfeder(d = 50, i = 1),
     d_eff = 56,
     F_zdm = 0,
     F_zda = 0,
@@ -55,9 +53,9 @@ print()
 assert l >= r
 
 print("Passfeder Rad")
-rad = din743.Calculator(fall = 2,
+rad = Calculator(fall = 2,
     werkstoff = werkstoff,
-    kerbe = din743.Passfeder(d = 70, i = 2),
+    kerbe = din743_2.Passfeder(d = 70, i = 2),
     d_eff = 78,
     F_zdm = 0,
     F_zda = 0,
@@ -79,9 +77,9 @@ print()
 assert l >= r
 
 print("Passfeder drehstarre Kupplung")
-drehstarr = din743.Calculator(fall = 2,
+drehstarr = Calculator(fall = 2,
     werkstoff = rad.werkstoff,
-    kerbe = din743.Passfeder(d = 55, i = 2),
+    kerbe = din743_2.Passfeder(d = 55, i = 2),
     d_eff = 78,
     F_zdm = 0, 
     F_zda = 0, 
@@ -103,9 +101,9 @@ print()
 assert l >= r
 
 print("Absatz 1")
-absatz1 = din743.Calculator(fall = 2,
+absatz1 = Calculator(fall = 2,
     werkstoff = werkstoff,
-    kerbe = din743.Absatz(d = 60, r = 1, t = 5),
+    kerbe = din743_2.Absatz(d = 60, r = 1, t = 5),
     d_eff = 78,
     F_zdm = 0, 
     F_zda = 0,
@@ -121,9 +119,9 @@ absatz1 = din743.Calculator(fall = 2,
     harte_randschicht = False)
 
 print("Absatz 2")
-absatz2 = din743.Calculator(fall = 2,
+absatz2 = Calculator(fall = 2,
     werkstoff = werkstoff,
-    kerbe = din743.Absatz(d = 70, r = 1, t = 4),
+    kerbe = din743_2.Absatz(d = 70, r = 1, t = 4),
     d_eff = 78,
     F_zdm = 0,
     F_zda = 0,
@@ -139,9 +137,9 @@ absatz2 = din743.Calculator(fall = 2,
     harte_randschicht = False)
 
 print("Absatz 3")
-absatz3 = din743.Calculator(fall = 2,
+absatz3 = Calculator(fall = 2,
     werkstoff = werkstoff,
-    kerbe = din743.Absatz(d = 60, r = 1, t = 9),
+    kerbe = din743_2.Absatz(d = 60, r = 1, t = 9),
     d_eff = 78,
     F_zdm = 0,
     F_zda = 0,
@@ -157,9 +155,9 @@ absatz3 = din743.Calculator(fall = 2,
     harte_randschicht = False)
 
 print("Freistrich 1")
-freistrich1 = din743.Calculator(fall = 2,
+freistrich1 = Calculator(fall = 2,
     werkstoff = werkstoff,
-    kerbe = din743.Freistrich(d = 55.4, r = 1, t = 2.3),
+    kerbe = din743_2.Freistrich(d = 55.4, r = 1, t = 2.3),
     d_eff = 78,
     F_zdm = 0,
     F_zda = 0,
