@@ -33,7 +33,7 @@ jobs:
         if: success()  # Only run if the previous step (pytest) succeeded
         run: |
           # Generate a tag for the release based on commit SHA or version
-          TAG=$(git rev-parse --short HEAD)  # Or use any versioning method you prefer
+          TAG: $(git rev-parse --short HEAD)  # Or use any versioning method you prefer
 
           # Create a GitHub release
           curl -X POST \
