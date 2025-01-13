@@ -3,3 +3,5 @@ git+https://github.com/hanslhansl/din743.git
 git+https://github.com/hanslhansl/diniso21771.git
 git+https://github.com/hanslhansl/din3962.git
 git+https://github.com/hanslhansl/diniso1328.git
+git+https://github.com/hanslhansl/din6885.git
+git+https://github.com/hanslhansl/din6892.git
