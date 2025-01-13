@@ -1,6 +1,8 @@
 from din743 import *
 from din3990 import *
 import diniso21771
+import din6885
+import din6892
 from din3962 import din3962_2
 
 
@@ -46,7 +48,7 @@ K_S = 2.5
 print("Passfeder Lamellenkupplung")
 lamellenkupplung = Calculator(fall = 2,
     werkstoff = werkstoff,
-    kerbe = din743_2.Passfeder(d = 30, i = 2),
+    kerbe = din743_2.Passfeder(din6885.PassfederHoheForm(30, 43, din6885.Passfeder.Form.A), 2),
     d_eff = 56,
     F_zdm = 0,
     F_zda = 0,
@@ -60,6 +62,7 @@ lamellenkupplung = Calculator(fall = 2,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
+din6892.C.Calculator(lamellenkupplung.kerbe, K_A, 535.93, lamellenkupplung.werkstoff.sigma_S_d_B)
 l = lamellenkupplung.werkstoff.sigma_S_d_B * 0.9 * (7 - 4) * (35) * lamellenkupplung.kerbe.d / 2 * 2 * 0.75 / 1000
 r = 535.93 * 1.75
 print(f"{l} >= {r}")
@@ -70,7 +73,7 @@ assert l >= r
 print("Passfeder Ritzel")
 ritzel = Calculator(fall = 2,
     werkstoff = lamellenkupplung.werkstoff,
-    kerbe = din743_2.Passfeder(d = 50, i = 1),
+    kerbe = din743_2.Passfeder(din6885.PassfederHoheForm(50, 54, din6885.Passfeder.Form.A), 1),
     d_eff = 56,
     F_zdm = 0,
     F_zda = 0,
@@ -84,6 +87,7 @@ ritzel = Calculator(fall = 2,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
+din6892.C.Calculator(ritzel.kerbe, K_A, 535.93, ritzel.werkstoff.sigma_S_d_B)
 l = ritzel.werkstoff.sigma_S_d_B * 0.9 * (9 - 5.5) * (40) * ritzel.kerbe.d / 2 * 1 * 1 / 1000
 r = 535.93 * 1.75
 print(f"{l} >= {r}")
@@ -94,7 +98,7 @@ assert l >= r
 print("Passfeder Rad")
 rad = Calculator(fall = 2,
     werkstoff = werkstoff,
-    kerbe = din743_2.Passfeder(d = 70, i = 2),
+    kerbe = din743_2.Passfeder(din6885.PassfederHoheForm(70, 48.3, din6885.Passfeder.Form.B), 2),
     d_eff = 78,
     F_zdm = 0,
     F_zda = 0,
@@ -108,6 +112,7 @@ rad = Calculator(fall = 2,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
+din6892.C.Calculator(rad.kerbe, K_A, 2933.511, rad.werkstoff.sigma_S_d_B)
 l = rad.werkstoff.sigma_S_d_B * 0.9 * (12 - 7.5) * (48.3) * rad.kerbe.d / 2 * 2 * 0.75 / 1000
 r = 2933.511 * 1.75
 print(f"{l} >= {r}")
@@ -118,7 +123,7 @@ assert l >= r
 print("Passfeder drehstarre Kupplung")
 drehstarr = Calculator(fall = 2,
     werkstoff = rad.werkstoff,
-    kerbe = din743_2.Passfeder(d = 55, i = 2),
+    kerbe = din743_2.Passfeder(din6885.PassfederHoheForm(55, 86, din6885.Passfeder.Form.A), 2),
     d_eff = 78,
     F_zdm = 0, 
     F_zda = 0, 
@@ -131,7 +136,8 @@ drehstarr = Calculator(fall = 2,
     M_tmax = 2933.511 * K_S,
     Rz = 16,
     K_V = 1,
-    harte_randschicht = False)
+    harte_randschicht = False)a
+din6892.C.Calculator(drehstarr.kerbe, K_A, 2933.511, drehstarr.werkstoff.sigma_S_d_B)
 l = drehstarr.werkstoff.sigma_S_d_B * 0.9 * (10 - 6) * 70 * drehstarr.kerbe.d / 2 * 2 * 0.75 / 1000
 r = 2933.511 * 1.75
 print(f"{l} >= {r}")
