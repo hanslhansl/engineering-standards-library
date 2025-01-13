@@ -6,7 +6,7 @@ import din6892
 from din3962 import din3962_2
 
 
-print("Verzahnung")
+print("Getriebegeometrie")
 S_Hstatmin = 1.3
 S_Hdyn_interval = (1.2, 1.5)
 S_Fstatmin = 3.5
@@ -18,7 +18,9 @@ geometrie = diniso21771.GearGeometry(m_n = 4,
                     beta = 0,
                     k = 0,
                     b_d_1_verhältnis = 0.64)
+print()
 
+print("Verzahnung")
 werkstoff = din3990_5.Werkstoff(din3990_5.Werkstoff.Art.Einsatzstahl, 1500, 860, 220)
 getriebe = din3990_11.Calculator(geometrie = geometrie, P = 55,
             n_1 = 980,
@@ -36,7 +38,6 @@ getriebe = din3990_11.Calculator(geometrie = geometrie, P = 55,
             S_Hstatmin=S_Hstatmin, S_Hdynmin=S_Hdyn_interval, S_Fstatmin=S_Fstatmin, S_Fdynmin=S_Fdyn_interval,
 
             _assert = True)
-
 assert geometrie.b / geometrie.m_n <= 30 # Konstruktionsvorgaben Tabelle 4
 assert getriebe.R_z100 < 4 # Konstruktionsvorgaben Seite 7
 print()
@@ -65,7 +66,7 @@ lamellenkupplung = Calculator(fall = 2,
 print()
 
 print("Passfeder Lamellenkupplung")
-din6892.C.Calculator(lamellenkupplung.kerbe, K_A, 535.93, lamellenkupplung.werkstoff.sigma_S_d_B)
+din6892.C.Calculator(lamellenkupplung.kerbe, K_A, lamellenkupplung.M_tm, lamellenkupplung.werkstoff.sigma_S_d_B)
 print()
 
 print("Kerbe Ritzel")
@@ -88,7 +89,7 @@ ritzel = Calculator(fall = 2,
 print()
 
 print("Passfeder Ritzel")
-din6892.C.Calculator(ritzel.kerbe, K_A, 535.93, ritzel.werkstoff.sigma_S_d_B)
+din6892.C.Calculator(ritzel.kerbe, K_A, ritzel.M_tm, ritzel.werkstoff.sigma_S_d_B)
 print()
 
 print("Kerbe Rad")
@@ -111,7 +112,7 @@ rad = Calculator(fall = 2,
 print()
 
 print("Passfeder Rad")
-din6892.C.Calculator(rad.kerbe, K_A, 2933.511, rad.werkstoff.sigma_S_d_B)
+din6892.C.Calculator(rad.kerbe, K_A, rad.M_tm, rad.werkstoff.sigma_S_d_B)
 print()
 
 print("Kerbe drehstarre Kupplung")
@@ -134,7 +135,7 @@ drehstarr = Calculator(fall = 2,
 print()
 
 print("Passfeder drehstarre Kupplung")
-din6892.C.Calculator(drehstarr.kerbe, K_A, 2933.511, drehstarr.werkstoff.sigma_S_d_B)
+din6892.C.Calculator(drehstarr.kerbe, K_A, drehstarr.M_tm, drehstarr.werkstoff.sigma_S_d_B)
 print()
 
 print("Absatz 1")
