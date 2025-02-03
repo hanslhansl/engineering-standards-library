@@ -57,9 +57,9 @@ lamellenkupplung = Calculator(fall = 2,
     M_bm = 0,
     M_ba = 0,
     M_bmax = 0,
-    M_tm = 535.93,
+    M_tm = getriebe.T[din3990_11.Ritzel],
     M_ta = 0,
-    M_tmax = 535.93 * K_S,
+    M_tmax = getriebe.T[din3990_11.Ritzel] * K_S,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
@@ -70,6 +70,7 @@ din6892.C.Calculator(lamellenkupplung.kerbe, K_A, lamellenkupplung.M_tm, lamelle
 print()
 
 print("Kerbe Ritzel")
+lagerabstand = 0.12
 ritzel = Calculator(fall = 2,
     werkstoff = lamellenkupplung.werkstoff,
     kerbe = din743_2.Passfeder(din6885.PassfederHoheForm(50, 54, din6885.Passfeder.Form.A), 1),
@@ -78,11 +79,11 @@ ritzel = Calculator(fall = 2,
     F_zda = 0,
     F_zdmax = 0,
     M_bm = 0,
-    M_ba = 450.256 * K_A,
-    M_bmax = 450.256 * K_S,
-    M_tm = 535.93,
+    M_ba = getriebe.F_z / 2 * lagerabstand / 2 * K_A,
+    M_bmax = getriebe.F_z / 2 * lagerabstand / 2 * K_S,
+    M_tm = getriebe.T[din3990_11.Ritzel],
     M_ta = 0,
-    M_tmax = 535.93 * K_S,
+    M_tmax = getriebe.T[din3990_11.Ritzel] * K_S,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
@@ -93,6 +94,7 @@ din6892.C.Calculator(ritzel.kerbe, K_A, ritzel.M_tm, ritzel.werkstoff.sigma_S_d_
 print()
 
 print("Kerbe Rad")
+lagerabstand = 0.0836
 rad = Calculator(fall = 2,
     werkstoff = werkstoff,
     kerbe = din743_2.Passfeder(din6885.PassfederHoheForm(70, 48.3, din6885.Passfeder.Form.B), 2),
@@ -101,11 +103,11 @@ rad = Calculator(fall = 2,
     F_zda = 0,
     F_zdmax = 0,
     M_bm = 0,
-    M_ba = 313.678 * K_A, 
-    M_bmax = 313.678 * K_S,
-    M_tm = 2933.511,
+    M_ba = getriebe.F_z / 2 * lagerabstand / 2 * K_A, 
+    M_bmax = getriebe.F_z / 2 * lagerabstand / 2 * K_S,
+    M_tm = getriebe.T[din3990_11.Rad],
     M_ta = 0, 
-    M_tmax = 2933.511 * K_S,
+    M_tmax = getriebe.T[din3990_11.Rad] * K_S,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
@@ -126,9 +128,9 @@ drehstarr = Calculator(fall = 2,
     M_bm = 0,
     M_ba = 0, 
     M_bmax = 0,
-    M_tm = 2933.511,
+    M_tm = getriebe.T[din3990_11.Rad],
     M_ta = 0, 
-    M_tmax = 2933.511 * K_S,
+    M_tmax = getriebe.T[din3990_11.Rad] * K_S,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
@@ -139,6 +141,7 @@ din6892.C.Calculator(drehstarr.kerbe, K_A, drehstarr.M_tm, drehstarr.werkstoff.s
 print()
 
 print("Absatz 1")
+a = 0.01812
 absatz1 = Calculator(fall = 2,
     werkstoff = werkstoff,
     kerbe = din743_2.Absatz(d = 60, r = 1, t = 5),
@@ -147,17 +150,18 @@ absatz1 = Calculator(fall = 2,
     F_zda = 0,
     F_zdmax = 0,
     M_bm = 0,
-    M_ba = 135.977 * K_A,
-    M_bmax = 135.977 * K_S,
-    M_tm = 2933.511,
+    M_ba = getriebe.F_z / 2 * a * K_A,
+    M_bmax = getriebe.F_z / 2 * a * K_S,
+    M_tm = getriebe.T[din3990_11.Rad],
     M_ta = 0,
-    M_tmax = 2933.511 * K_S,
+    M_tmax = getriebe.T[din3990_11.Rad] * K_S,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
 print()
 
 print("Absatz 2")
+a = 0.01748
 absatz2 = Calculator(fall = 2,
     werkstoff = werkstoff,
     kerbe = din743_2.Absatz(d = 70, r = 1, t = 4),
@@ -166,17 +170,18 @@ absatz2 = Calculator(fall = 2,
     F_zda = 0,
     F_zdmax = 0,
     M_bm = 0,
-    M_ba = 131.175 * K_A,
-    M_bmax = 131.175 * K_S,
-    M_tm = 2933.511,
+    M_ba = getriebe.F_z / 2 * a * K_A,
+    M_bmax = getriebe.F_z / 2 * a * K_S,
+    M_tm = getriebe.T[din3990_11.Rad],
     M_ta = 0, 
-    M_tmax = 2933.511 * K_S,
+    M_tmax = getriebe.T[din3990_11.Rad] * K_S,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
 print()
 
 print("Absatz 3")
+a = 0.0008
 absatz3 = Calculator(fall = 2,
     werkstoff = werkstoff,
     kerbe = din743_2.Absatz(d = 60, r = 1, t = 9),
@@ -185,11 +190,11 @@ absatz3 = Calculator(fall = 2,
     F_zda = 0,
     F_zdmax = 0,
     M_bm = 0,
-    M_ba = 6.003 * K_A,
-    M_bmax = 6.003 * K_S,
-    M_tm = 2933.511,
+    M_ba = getriebe.F_z / 2 * a * K_A,
+    M_bmax = getriebe.F_z / 2 * a * K_S,
+    M_tm = getriebe.T[din3990_11.Rad],
     M_ta = 0,
-    M_tmax = 2933.511 * K_S,
+    M_tmax = getriebe.T[din3990_11.Rad] * K_S,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
@@ -206,9 +211,9 @@ freistrich1 = Calculator(fall = 2,
     M_bm = 0,
     M_ba = 0,
     M_bmax = 0,
-    M_tm = 2933.511,
+    M_tm = getriebe.T[din3990_11.Rad],
     M_ta = 0, 
-    M_tmax = 2933.511 * K_S,
+    M_tmax = getriebe.T[din3990_11.Rad] * K_S,
     Rz = 16,
     K_V = 1,
     harte_randschicht = False)
